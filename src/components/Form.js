@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Form() {
-  const [firstName, setFirstName] = useState("John");
-  const [lastName, setLastName] = useState("Henry");
-
+function Form(props) {
   return (
-    <form>
-      <input type="text" value={firstName} />
-      <input type="text" value={lastName} />
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <form onSubmit={props.handleSubmit}>
+        <input
+          type="text"
+          value={props.firstName}
+          onChange={props.handleFirstNameChange}
+        />
+        <input
+          type="text"
+          value={props.lastName}
+          onChange={props.handleLastNameChange}
+        />
+        <label htmlFor="newsletter">Accept TOS</label>
+        <input
+          type="checkbox"
+          id="newsletter"
+          onChange={props.handleNewsletterChange}
+          checked={props.agree}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 
